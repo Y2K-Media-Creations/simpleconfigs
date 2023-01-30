@@ -1,0 +1,6 @@
+name: "SimpleConfigs"
+main: "sh.miles.simpleconfigs.TestMain"
+version: "1.0"
+author: "Miles"
+description: "A simple plugin to test SimpleConfigs"
+api-version: "1.13"
