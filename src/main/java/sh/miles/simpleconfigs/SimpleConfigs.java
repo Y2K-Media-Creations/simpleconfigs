@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 
 import lombok.Setter;
 import sh.miles.simpleconfigs.config.SimpleConfig;
+import sh.miles.simpleconfigs.impl.BukkitTypes;
 import sh.miles.simpleconfigs.type.YamlConverter;
 import sh.miles.simpleconfigs.type.YamlConverterManager;
 
@@ -37,5 +38,9 @@ public final class SimpleConfigs {
 
         public static <I, O> YamlConverter<I, O> getConverter(TypeToken<I> inputType) {
                 return YamlConverterManager.getInstance().getConverter(inputType);
+        }
+
+        public static void registerBukkitConverters() {
+                BukkitTypes.register();
         }
 }

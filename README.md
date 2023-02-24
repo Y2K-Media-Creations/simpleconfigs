@@ -35,6 +35,34 @@ config.reload();
 ## Constructing new config types
 Config types are managed by "YamlConverter"'s which are registered to the "YamlConverterManager". The "YamlConverterManager" is a singleton and can be accessed by "YamlConverterManager.getInstance()". The "YamlConverterManager" is used to register new "YamlConverter"'s and to get "YamlConverter"'s for a specific type.
 
+
+### Before You Start
+before you build your own config types using YamlConverter's you should know that SimpleConfigs comes with a few YamlConverter's already built in. These are not registered by default but can be registered. 
+
+The Default Built in YamlConverter's are (These are automatically registered):
+* String.class
+* Integer.class
+* Double.class
+* Boolean.class
+* Long.class
+* Float.class
+* Byte.class
+* Short.class
+* Character.class
+  
+If you want to bring in some Bukkit objects without going through the work of converting them SimpleConfigs also comes with a few Bukkit YamlConverter's, however these are not registered by default. The ones that are avaliable are (More Will Likely Come in the future. I reccomend making a PR if you see one you would like to add):
+* Sound.class
+* Material.class
+
+Registering these YamlConverter's is done by calling the registerBukkitConverters() method in the SimpleConfigs class. Alternatively you can register them by calling BukkitTypes#register()
+```java
+SimpleConfigs.registerBukkitConverters();
+```
+or
+```java
+BukkitTypes.register();
+```
+
 ### Registering a new SimpleYamlConverter
 A SimpleYamlConverter is a converter that has 4 parameters in a constructor, 2 Functions, 1 to convert, 1 to revert, 2 Classes's to specify the type of the object to convert and the type of the object to revert to.
 
