@@ -19,17 +19,17 @@ public final class BukkitTypes {
                     throw new IllegalArgumentException("Invalid sound: " + fromConfig);
                 }
             }, Sound.class, String.class);
+
     public static final YamlConverter<Material, String> MATERIAL_CONVERTER = new SimpleYamlConverter<>(
             Material::toString,
             (String fromConfig) -> {
-                try {
-                    return Material.valueOf(fromConfig);
-                } catch (IllegalArgumentException e) {
+                final Material material = Material.matchMaterial(fromConfig);
+                if (material == null) {
                     throw new IllegalArgumentException("Invalid material: " + fromConfig);
                 }
+                return material;
             }, Material.class, String.class);
 
-    
     public static void register() {
         YamlConverterManager.getInstance().registerConverter(SOUND_CONVERTER);
         YamlConverterManager.getInstance().registerConverter(MATERIAL_CONVERTER);

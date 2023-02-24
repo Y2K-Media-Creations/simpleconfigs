@@ -59,7 +59,7 @@ public class SimpleConfig {
         }
 
         final I converted = converter.revert((O) configValue);
-        return converter.revert((O) converted);
+        return converted;
     }
 
     public <I, O> List<I> getList(final String path, final Class<I> inputType) {
