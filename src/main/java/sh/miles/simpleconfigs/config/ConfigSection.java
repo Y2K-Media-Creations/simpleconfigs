@@ -2,6 +2,7 @@ package sh.miles.simpleconfigs.config;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -17,6 +18,8 @@ public interface ConfigSection {
 
     @SuppressWarnings("unused")
     <I, O> List<I> getList(final String path, final Class<I> type);
+
+    Set<String> getKeys(boolean deep); 
 
     FileConfiguration getBukkitRoot();
 

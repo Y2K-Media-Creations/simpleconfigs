@@ -3,6 +3,7 @@ package sh.miles.simpleconfigs.config;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.bukkit.configuration.ConfigurationSection;
@@ -87,6 +88,11 @@ public class SimpleConfigSection implements ConfigSection {
     @Override
     public ConfigSection getSection(String path) {
         return new SimpleConfigSection(this, path);
+    }
+
+    @Override
+    public Set<String> getKeys(boolean deep) {
+        return this.currentSection.getKeys(deep);
     }
 
     @Override
