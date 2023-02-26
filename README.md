@@ -179,7 +179,7 @@ SimpleConfigs.registerConverter(TEST_OBJECT_CONVERTER);
     <dependency>
         <groupId>sh.miles</groupId>
         <artifactId>simpleconfigs</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.4-SNAPSHOT</version>
     </dependency>
 </dependencies>
 ```
