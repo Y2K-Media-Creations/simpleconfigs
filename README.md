@@ -193,7 +193,7 @@ repositories {
 }   
 
 dependencies {
-    compile 'sh.miles:simpleconfigs:1.0-SNAPSHOT'
+    compile 'sh.miles:simpleconfigs:1.0.4-SNAPSHOT'
 }
 ```
 
