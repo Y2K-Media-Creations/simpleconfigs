@@ -10,7 +10,7 @@ plugins {
 }
 
 group = 'sh.miles.simpleconfigs'
-version = '1.0.2-SNAPSHOT'
+version = '1.0.4-SNAPSHOT'
 description = 'simpleconfigs'
 
 sourceCompatibility = JavaVersion.VERSION_17

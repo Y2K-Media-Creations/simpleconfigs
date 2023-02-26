@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import com.google.gson.reflect.TypeToken;
 
+import sh.miles.simpleconfigs.config.ConfigSection;
 import sh.miles.simpleconfigs.config.SimpleConfig;
 import sh.miles.simpleconfigs.type.LikeYamlConverter;
 import sh.miles.simpleconfigs.type.YamlConverter;
@@ -35,7 +36,8 @@ public class SimpleConfigsTest extends BasicTest {
     @SuppressWarnings("all")
     public void testGetYamlType() {
 
-        final YamlConverter<String, String> converter = YamlConverterManager.getInstance().getConverter(TypeToken.get(String.class));
+        final YamlConverter<String, String> converter = YamlConverterManager.getInstance()
+                .getConverter(TypeToken.get(String.class));
         assertNotNull(converter, "Converter should exist");
     }
 
@@ -76,7 +78,8 @@ public class SimpleConfigsTest extends BasicTest {
 
         YamlConverterManager.getInstance().registerConverter(newConverter);
 
-        final YamlConverter<String, String> newConverter2 = YamlConverterManager.getInstance().getConverter(String.class);
+        final YamlConverter<String, String> newConverter2 = YamlConverterManager.getInstance()
+                .getConverter(String.class);
         assertNotNull(newConverter2, "Converter should exist");
     }
 
@@ -119,7 +122,23 @@ public class SimpleConfigsTest extends BasicTest {
         final UUID test = config.get("key", UUID.class);
 
         assertNotNull(test, "Test should exist");
+    }
 
+    @Test
+    public void testGetSection() {
+        SimpleConfigs.setPlugin(plugin);
+        SimpleConfig config = SimpleConfigs.loadConfig("test.yml");
+
+        for(int i = 0; i < 10; i++) {
+            config.set("key." + i, i);
+        }
+
+        config.save();
+
+        ConfigSection section = config.getSection("key");
+        for(int i = 0; i < 10; i++) {
+            assertNotNull(section.get(String.valueOf(i), Integer.class), "Value should exist");
+        }
     }
 
 }
